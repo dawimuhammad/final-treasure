@@ -1,21 +1,35 @@
 import { StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
-    boardRow: {
+    board: {
+        marginTop: 75
+    },
+    boardColumn: {
         flex: 1,
+        flexDirection: 'column',
+    },
+    boardRow: {
         flexDirection: 'row',
-        margin: 0,
-        padding: 0
     },
     boxOdd: {
         width: 50,
         height: 50,
+        alignContent: 'center',
         backgroundColor: 'powderblue'
     },
     boxEven: {
         width: 50,
         height: 50,
+        alignContent: 'center',
+        justifyContent: 'center',
         backgroundColor: 'steelblue'
+    },
+    buttonView: {
+        marginTop: 100,
+    },
+    player: {
+        fontSize: 20,
+        color: 'white'
     }
 })
 
