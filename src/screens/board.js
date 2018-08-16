@@ -1,24 +1,30 @@
 import React, { Component } from 'react'
-import { View, Button, Text } from 'react-native'
+import { View, Button, Text, Alert } from 'react-native'
 import styles from '../styles'
-// import Icon from 'react-native-vector-icons/FontAwesome'
+
+import { rollDice } from '../action/actionGame'
+import { connect } from 'react-redux'
 
 class Board extends Component {
     constructor() {
         super()
         this.state = {
             board: [],
-            randomNumber: 5
+            randomNumber: 0
         }
 
         this.rollDice = this.rollDice.bind(this)
     }
 
     rollDice() {
+        let randomNumber = Math.floor(Math.random() * 7)
         console.log(Math.floor(Math.random() * 7))
-    }
 
-    
+        rollDice(randomNumber)
+        this.setState({
+            randomNumber: randomNumber
+        })
+    }
 
     render () {
         return (
@@ -438,7 +444,8 @@ class Board extends Component {
                     </View>
                     
                     <View style={ styles.buttonView }>
-                        <Button onPress={ () => this.rollDice() } title="Roll Dice" color="teal">
+                        <Text style={{ textAlign: 'center' }}>{ this.state.randomNumber }</Text>
+                        <Button onPress={ this.rollDice } title="Roll Dice" color="teal">
                         </Button>
                     </View>
                 </View>
@@ -449,4 +456,17 @@ class Board extends Component {
 
 }
 
-export default Board
+const mapStateToProps = state => {
+    return {
+      accounts: state.gameReducer.randomDice,
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      rollDice: (random) => { dispatch(rollDice(random)) },
+    }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Board)
+// export default Board
