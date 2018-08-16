@@ -21,15 +21,20 @@ const style = StyleSheet.create({
         width: 50,
         height: 50,
         alignContent: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         backgroundColor: 'steelblue'
     },
     buttonView: {
         marginTop: 100,
     },
     player: {
+        textAlign: 'center',
         fontSize: 20,
         color: 'white'
+    },
+    boardNumber: {
+        color: 'white',
+        fontSize: 13
     }
 })
 
